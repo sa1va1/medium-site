@@ -39,18 +39,26 @@ let swiper = new Swiper(".mySwiper", {
     },
 });
 
-const tokenUser = JSON.parse(localStorage.getItem('token'));
-if (tokenUser) {
-    document.querySelector(".logout").style.display = 'block';
-    document.querySelector('.log').style.display = 'none';
-    document.querySelector('.reg').style.display = 'none';
-    document.querySelector('.dash').style.display = 'block';
-} else {
-    document.querySelector(".logout").style.display = 'none';
-    document.querySelector('.log').style.display = 'block';
-    document.querySelector('.reg').style.display = 'block';
-    document.querySelector('.dash').style.display = 'none';
+function btnsReoload(){
+    const tokenUser = JSON.parse(localStorage.getItem('token'));
+    if (tokenUser) {
+        document.querySelector(".logout").style.display = 'block';
+        document.querySelector('.log').style.display = 'none';
+        document.querySelector('.reg').style.display = 'none';
+        document.querySelector('.dash').style.display = 'block';
+    } else {
+        document.querySelector(".logout").style.display = 'none';
+        document.querySelector('.log').style.display = 'block';
+        document.querySelector('.reg').style.display = 'block';
+        document.querySelector('.dash').style.display = 'none';
+    }
+
+    if(location.reload === true){
+        location.reload();
+    } 
 }
+
+btnsReoload()
 
 fetch(`https://blog-post-production-b61c.up.railway.app/api/v1/blogs`, {
     headers:{
